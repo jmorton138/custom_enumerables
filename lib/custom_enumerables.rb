@@ -40,10 +40,58 @@ module Enumerable
             return false
         end 
     end
+
+    def my_any?
+        selected =[]
+        return_values = []
+        for i in self
+            selected << yield(i)
+            if selected.last == true
+                return_values << i
+            end
+        end
+        if return_values.length < 0
+            return true
+        else
+            return false
+        end 
+    end
+
+    def my_none?
+        selected =[]
+        return_values = []
+        for i in self
+            selected << yield(i)
+            if selected.last == true
+                return_values << i
+            end
+        end
+        if return_values.length == 0
+            return true
+        else
+            return false
+        end 
+    end
+
+    def my_count(block = nil)
+        count = 0
+        if block != nil
+           for i in self
+                if i == block
+                    count += 1
+                end
+            end
+        else
+            for i in self
+                count += 1
+            end
+        end
+        count
+    end
 end
 
 #puts "my_each vs. each"
-numbers = [1, 2, 3, 4, 5, 6]
+numbers = [1, 3, "steve", 4, 3, 6]
 # numbers.my_each { |item| puts item }
 # numbers.each { |item| puts item}
 
@@ -64,3 +112,5 @@ numbers = [1, 2, 3, 4, 5, 6]
 # puts "select"
 # puts numbers.select { |item| item >= 2 }
 
+#puts numbers.count(3)
+puts numbers.my_count("steve")
