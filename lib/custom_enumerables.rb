@@ -89,11 +89,15 @@ module Enumerable
         count
     end
 
-    def my_map(a_proc)
-        #yield(4)
+    def my_map(a_proc = nil, &a_block)
+        if block_given?
+            block = a_block
+        else
+            block = a_proc
+        end
         new_array = []
         for i in self
-            new_array << a_proc.call(i)
+            new_array << block.call(i)
         end
         new_array
     end
@@ -151,7 +155,7 @@ numbers = [1, 2, 3, 4, 5, 6]
 
 a_proc = Proc.new { |item| item + 5 }
 
-puts numbers.my_map(a_proc)
+puts numbers.my_map(a_proc) { |item| item + 1 }
 
 
 
