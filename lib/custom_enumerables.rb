@@ -50,7 +50,7 @@ module Enumerable
                 return_values << i
             end
         end
-        if return_values.length < 0
+        if return_values.length > 0
             return true
         else
             return false
