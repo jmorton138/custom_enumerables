@@ -89,11 +89,11 @@ module Enumerable
         count
     end
 
-    def my_map
+    def my_map(a_proc)
         #yield(4)
         new_array = []
         for i in self
-            new_array << yield(i)
+            new_array << a_proc.call(i)
         end
         new_array
     end
@@ -147,7 +147,11 @@ numbers = [1, 2, 3, 4, 5, 6]
 # puts numbers.inject {|sum, num| sum + num}
 # puts numbers.my_inject {|sum, num| sum + num}
 
-multiply_els([2,4,5])
+#multiply_els([2,4,5])
+
+a_proc = Proc.new { |item| item + 5 }
+
+puts numbers.my_map(a_proc)
 
 
 
