@@ -111,8 +111,12 @@ module Enumerable
         end
         sum
     end
-end
 
+
+end
+def multiply_els(args)
+    p args.my_inject {|sum, num| sum * num}
+end
 
 #puts "my_each vs. each"
 numbers = [1, 2, 3, 4, 5, 6]
@@ -140,8 +144,10 @@ numbers = [1, 2, 3, 4, 5, 6]
 #p numbers.my_map {|item| item + 2}
 #puts numbers.map {|item| item + 1}
 
-puts numbers.inject {|sum, num| sum + num}
-puts numbers.my_inject {|sum, num| sum + num}
+# puts numbers.inject {|sum, num| sum + num}
+# puts numbers.my_inject {|sum, num| sum + num}
+
+multiply_els([2,4,5])
 
 
 
